@@ -1,43 +1,32 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
-import EpisodeItem from "../components/Episode.astro";
-import GuestGallery from "../components/GuestGallery.astro";
+// import EpisodeItem from "../components/Episode.astro";
+// import GuestGallery from "../components/GuestGallery.astro";
 import Form from "../components/NewsletterForm.astro";
-import Subscribe from "../components/Subscribe.astro";
+// import Subscribe from "../components/Subscribe.astro";
 
-import { SHOW_TITLE, SHOW_DESCRIPTION } from "../consts";
+// import { SHOW_TITLE, SHOW_DESCRIPTION } from "../consts";
 
 import { Content as Signup } from "./_signup.md";
 import { Content as Hosts } from "./_hosts.md";
 import { Content as Sponsor } from "./_sponsor.md";
 
-import { getEpisodesDesc } from "../content/episodes";
+// import { getEpisodesDesc } from "../content/episodes";
 
-const episodes = await getEpisodesDesc();
+// const episodes = await getEpisodesDesc();
 ---
 
 <PageLayout>
   <header>
-    <h1 set:html={SHOW_TITLE} />
-    <p set:html={SHOW_DESCRIPTION} />
+    <h1 set:html=Roadmap />
   </header>
 
-  <section>
-    <Subscribe />
-  </section>
-
-  <section>
-    {episodes.map((episode) => <EpisodeItem {...episode.data} />)}
-  </section>
 
   <section>
     <Signup />
     <Form />
   </section>
 
-  <aside>
-    <GuestGallery />
-  </aside>
 
   <section>
     <Hosts />

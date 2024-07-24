@@ -6,17 +6,17 @@ import Font from "../components/Font.astro";
 
 import {
   SITE_TITLE,
-  SITE_DESCRIPTION,
-  SHOW_TITLE,
-  SHOW_DESCRIPTION,
+  // SITE_DESCRIPTION,
+  // SHOW_TITLE,
+  // SHOW_DESCRIPTION,
 } from "./../consts";
 
 interface Props {
   title?: string;
 }
 
-const siteTitle = SITE_TITLE || SHOW_TITLE;
-const siteDescription = SITE_DESCRIPTION || SHOW_DESCRIPTION;
+const siteTitle = SITE_TITLE ;
+// const siteDescription = SITE_DESCRIPTION || SHOW_DESCRIPTION;
 
 const { title } = Astro.props;
 const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
@@ -25,9 +25,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const socialType = "website";
 const socialTitle = pageTitle;
 const socialImage = new URL("/assets/og-image.png", Astro.url);
-const socialDescription = siteDescription;
+// const socialDescription = siteDescription;
 const twitterCreator = "@raae";
 const twitterCard = "summary_large_image";
+
+// inside head
+//    <meta name="description" content={siteDescription} />
+//     <meta property="og:description" content={socialDescription} />
+// <meta name="twitter:description" content={socialDescription} />
 ---
 
 <!doctype html>
@@ -45,18 +50,16 @@ const twitterCard = "summary_large_image";
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
 
-    <meta name="description" content={siteDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteTitle} />
     <meta property="og:type" content={socialType} />
     <meta property="og:title" content={socialTitle} />
-    <meta property="og:description" content={socialDescription} />
+
     <meta property="og:image" content={socialImage} />
 
     <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:creator" content={twitterCreator} />
     <meta name="twitter:title" content={socialTitle} />
-    <meta name="twitter:description" content={socialDescription} />
     <meta name="twitter:image:src" content={socialImage} />
 
     <Font />
